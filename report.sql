@@ -15,6 +15,8 @@
 
 
 -- 5. Mostrar solo nombre y precio de productos (javi)
+SELECT nombre, precio
+FROM productos;
 
 
 -- 6. Productos con precio mayor a 50000 (victor)
@@ -31,6 +33,11 @@
 
 -- 10. Detalles de venta con cantidad >= 2 (javi)
 
+SELECT id_venta, id_detalle, id_producto, cantidad
+FROM detalle_venta
+WHERE cantidad >= 2
+ORDER BY id_venta ;
+
 
 -- 11. Total de clientes (victor)
 
@@ -45,6 +52,10 @@
 
 
 -- 15. Suma total de precios de productos (javi)
+SELECT SUM(precio) FROM productos;
+-- O también se puede escribir como (asi queda mas claro el resultado y el nombre de la columna):
+SELECT sum(precio) AS total_precio FROM productos;
+
 
 
 -- 16. Mostrar venta + nombre del cliente + fecha (victor)
@@ -57,7 +68,9 @@
 
 
 -- 19. Mostrar nombre del producto + cantidad vendida + id de venta (javi)
-
+SELECT p.nombre, dv.cantidad, dv.id_venta
+FROM detalle_venta dv
+JOIN productos p ON dv.id_producto = p.id_producto;
 
 -- 20. Mostrar cuántas ventas ha realizado cada cliente (diego)
 
@@ -76,6 +89,12 @@
 
 -- 25. Mostrar clientes cuya suma total de unidades compradas sea mayor a 2 (javi)
 
+SELECT c.nombre, SUM(dv.cantidad) AS total_unidades
+FROM clientes c
+JOIN ventas v ON c.id_cliente = v.id_cliente
+JOIN detalle_venta dv ON v.id_venta = dv.id_venta
+GROUP BY c.id_cliente, c.nombre
+HAVING SUM(dv.cantidad) > 2;
 
 -- 26. Consulta trampa que no devuelva resultados
 -- Explicar por qué el resultado vacío es correcto  (todos juntos rojo)
