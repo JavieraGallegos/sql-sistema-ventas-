@@ -123,7 +123,7 @@ Este archivo contiene las 26 consultas del challenger. Puedes ejecutarlas todas 
 **Ejecutar todas las consultas de una vez:**
 
 ```bash
-psql -U postgres -d sistema_ventas -f report.sql
+psql -U postgres -d sql-sistema-ventas- -f report.sql
 ```
 
 **Ejecutar una consulta específica:**
