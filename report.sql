@@ -171,4 +171,10 @@ GROUP BY c.id_cliente, c.nombre
 HAVING SUM(dv.cantidad) > 2;
 
 -- 26. Consulta trampa que no devuelva resultados
+SELECT id_producto, nombre, precio
+FROM productos
+WHERE nombre = 'PlayStation 3' ;
+-- Da vacio porque no hay ningun producto con el nombre PlayStation 3
+ 
+
 -- Explicar por qué el resultado vacío es correcto  (todos juntos rojo)
